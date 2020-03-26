@@ -1,0 +1,26 @@
+[user]
+	email = infra_robot@improbable.io
+	name = Apurva Chitnis
+[alias]
+  p = pull
+  b = branch
+  ci = commit
+  c = checkout
+  cb = checkout -b
+  cp = cherry-pick
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold cyan) <%an>%Creset' --abbrev-commit
+  s = status
+  st = status
+
+[branch]
+  autosetuprebase = always
+[pull]
+	rebase = true
+[core]
+	excludesfile = /home/apu/.gitignore_global
+[fetch]
+	prune = true
+[protocol]
+	version = 2
+[push]
+	default = upstream

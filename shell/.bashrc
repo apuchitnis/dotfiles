@@ -116,54 +116,74 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$PATH:/home/apurva/bin
-export PATH=$PATH:/home/apurva/.improbable/bin
+export ETCDCTL_API=3
 
-export GOPATH=/home/apurva/Private/code/go
-export GOBIN=$GOPATH/bin/
+export PATH=$PATH:/home/apu/bin
+
+export GOPATH=/home/apu/Private/code/platform/go
+export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
-export GOUTILS=/home/apurva/Software/go/bin
+export GOUTILS=/home/apu/Software/go/bin
 export PATH=$PATH:$GOUTILS
-export PATH=$PATH:/home/apurva/Software/etcd-v2.3.2-linux-amd64/
-export PATH=$PATH:/home/apurva/Software/idea-IU-162.2228.15/bin/
-export PATH=$PATH:/home/apurva/Software/Gogland-163.12024.32/bin/
+export PATH=$PATH:/home/apu/Software/etcd-v2.3.2-linux-amd64/
+export PATH=$PATH:/home/apu/Software/idea-IU-162.2228.15/bin/
+export PATH=$PATH:/home/apu/Software/GoLand-2017.3/bin/
+export PATH=$PATH:/home/apu/Software/RubyMine-2017.2.3/bin
+export PATH=$PATH:/home/apu/Software/packer
 
-export PATH=$PATH:/home/apurva/Private/code/config/bin/
+export PATH=$PATH:/home/apu/Private/code/config/bin/
 
-export PATH=$PATH:/improbable/tools/latest/linux
-export IMPROBABLE_TOOLS=/improbable/tools
+# export PATH=$PATH:/improbable/tools/latest/linux
 export PATH=$PATH:/improbable/it/tools/rclone
 
-export EDITOR='emacs -nw'
+export PATH=$PATH:/opt/hashicorp
 
+# Screen layout setup scripts.
+export PATH=$PATH:~/.screenlayout/
+
+
+#tfenv
+export PATH=$PATH:~/.tfenv/bin
+
+export EDITOR='emacs -nw'
 alias e='emacs -nw'
 alias ga='git add'
-alias gd='git diff'
-alias gs='git status'
 alias gb='git branch'
+alias gd='git diff -w'
+alias gs='git status'
+alias gl='git log'
+alias gp='git pull'
 alias gls='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short'
 alias gll='git log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat'
 alias gcm='git commit -m'
 alias gca='git commit --amend -a'
 alias gcam='git commit -am'
 alias gco='git checkout'
+alias gcom='git checkout master'
+alias gdo='git diff -w $(git merge-base --fork-point origin/master)'
+alias gdon='git diff --name-only $(git merge-base --fork-point origin/master)'
+
 alias gundo-commit='git reset --soft HEAD~1'
-alias ad='arc diff'
+alias ad='arc diff --browse'
 alias grb='git rebase -i master'
 alias ..='cd ..'
+alias code='cd ~/Private/code'
+alias f='find | grep -i --color'
 
-# Bazel autocomplete
-source /usr/local/lib/bazel/bin/bazel-complete.bash
+# SSH keys
+ssh-add ~/.ssh/apurva_git_rsa
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f /home/apurva/Software/google-cloud-sdk/path.bash.inc ]; then
-  source '/home/apurva/Software/google-cloud-sdk/path.bash.inc'
-fi
+#if [ -f '/home/apu/Software/google-cloud-sdk/path.bash.inc' ]; then source '/home/apu/Software/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f /home/apurva/Software/google-cloud-sdk/completion.bash.inc ]; then
-  source '/home/apurva/Software/google-cloud-sdk/completion.bash.inc'
-fi
+#if [ -f '/home/apu/Software/google-cloud-sdk/completion.bash.inc' ]; then source '/home/apu/Software/google-cloud-sdk/completion.bash.inc'; fi
 
-ssh-add ~/.ssh/apurva_git_rsa
+cd $GOPATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
